@@ -1,0 +1,39 @@
+﻿<div ng-controller="app.views.data.customer as vm">
+    <div href="javascript:;">
+        <h3>@L("Customers") ({{vm.customers.length}})</h3>
+        <table class="table">
+            <tr>
+                <td><input ng-model="vm.filterText" auto-focus class="form-control" ng-change="vm.getCustomers()" placeholder="@L("SearchWithThreeDot")" type="search" /></td>
+                <td><button ng-click="vm.getCustomers()" class="btn btn-primary" type="submit"><i class="fa fa-search"></i></button></td>
+                <td><button class="btn btn-primary blue" ng-click="vm.openCreateCustomerModal()"><i class="fa fa-plus"></i> @L("CreateNew")</button></td>
+            </tr>
+        </table>
+    </div>
+    <p></p>
+    <div id="AllCustomersList" class="list-group">
+        <table class="table">
+            <tr style="background-color: #02baf2; color:white; font: sans-serif">
+                <th>@L("PrimaryKey")</th>
+                <th>@L("LastName")</th>
+                <th>@L("FirstName")</th>
+                @*<th>@L("StreetAddress")</th>*@
+                <th align="center">@L("AreCredentialsChecked")</th>
+                <th align="center">@L("AreCredentialsOkay")</th>
+                <th align="center">@L("Options")</th>
+            </tr>
+            <tr ng-repeat="item in vm.customers">
+                <td >{{ item.id }}</td>
+                <td>{{ item.lastName }}</td>
+                <td>{{ item.firstName }}</td>
+                @*<td>{{ vm.getStreetAddress(item.streetAddressId) }} </td>*@
+                <td align="center"><input type="checkbox" disabled ng-checked="item.areCredentialsChecked" ng-true-value="'true'" ng-false-value="'false'"></td>
+                <td align="center"><input type="checkbox" disabled ng-checked="item.areCredentialsOkay" ng-true-value="'true'" ng-false-value="'false'"></td>
+                <td align="justify">
+                    <button class="btn btn-default" ng-click="vm.showCustomer(item)" href="javascript:;"><i class="fa fa-info"></i></button>
+                    <button class="btn btn-warning" ng-click="vm.editCustomer(item)" href="javascript:;"><i class="fa fa-pencil"></i></button>
+                    <button class="btn btn-danger" ng-click="vm.deleteCustomer(item)" href="javascript:;"><i class="fa fa-trash"></i></button>
+                </td>
+            </tr>
+        </table>
+    </div>
+</div>

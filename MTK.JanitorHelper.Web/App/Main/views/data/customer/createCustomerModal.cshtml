@@ -1,0 +1,55 @@
+﻿@*/*
+ * Copyright (C) Marko Kylmälahti
+ *
+ * This file is part of the JanitorHelper Web project.
+ *
+ * Created: 3. December 2015
+ * Authors: Marko Kylmalahti
+ */*@
+
+@using MTK.JanitorHelper.DataItemBase.Customers
+@using MTK.JanitorHelper.DataItemBase.Address
+<div>
+    <form name="createCustomerForm" role="form" novalidate class="form-validation">
+        <div class="modal-header">
+            <h4 class="modal-title">
+                <span>@L("CreateNewCustomer")</span>
+            </h4>
+        </div>
+        <div class="modal-body">
+
+            <div class="form-group form-md-line-input form-md-floating-label no-hint">
+                <input class="form-control" type="text" name="FirstName" ng-model="vm.customer.firstName" required >
+                <label>@L("FirstName")</label>
+            </div>
+
+            <div class="form-group form-md-line-input form-md-floating-label no-hint">
+                <input type="text" name="LastName" class="form-control" ng-model="vm.customer.lastName" required>
+                <label>@L("LastName")</label>
+            </div>
+
+            <div class="form-group form-md-line-input form-md-floating-label no-hint">
+                <input type="text" name="StreetAddressName" class="form-control" ng-model="vm.customer.streetAddressName" required>
+                <label>@L("StreetAddress")</label>
+            </div>
+
+            <div class="form-group form-md-line-input form-md-floating-label no-hint">
+                <input type="email" name="EmailAddress" class="form-control" ng-model="vm.customer.emailAddress" >
+                <label>@L("EmailAddress")</label>
+            </div>
+
+        </div>
+        <div class="modal-footer">
+            <button ng-disabled="vm.saving" type="button" class="btn btn-default" ng-click="vm.cancel()">@L("Cancel")</button>
+            <button type="submit" button-busy="vm.saving" busy-text="@L("SavingWithThreeDot")" class="btn btn-primary blue" ng-click="vm.save()" ng-disabled="createCustomerForm.$invalid"><i class="fa fa-save"></i> <span>@L("Save")</span></button>
+        </div>
+    </form>
+</div>
+
+        @*public string StreetAddress { get; set; }
+
+        public string StreetAddressNrCode { get; set; }
+
+        public int AreaCode { get; set; }
+
+        public string CityName { get; set; }*@
